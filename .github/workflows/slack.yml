@@ -5,11 +5,10 @@ name: slack
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ master ]
 
 jobs:
   slack:
-
     runs-on: ubuntu-latest
     steps:
     - name: Notify slack
