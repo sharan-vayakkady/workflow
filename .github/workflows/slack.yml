@@ -1,19 +1,18 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: slack
 
 on:
   pull_request:
     branches: [ "main" ]
-
+name: Slack Notification Demo
 jobs:
-  slack:
+  slackNotification:
+    name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-    - name: Notify slack
+    - uses: actions/checkout@v2
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
       env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: pullreminders/slack-action@master
-      with:
-        args: '{\"channel\":\"C05AAG923T6\",\"text\":\"Hello world\"}'
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
